@@ -1,0 +1,59 @@
+<html>
+<div align = "center">
+
+<body style="background-color: #3DC247;">
+
+<head>
+<title>Conor McGregor</title>
+</head>
+<body>
+
+<div align = "center">
+<h1 style="font-family:verdana;">I AM EL CHAPO</h1>
+<div align = "center">
+<h2 style="font-family:verdana;">YOU'LL DO NUTIN.</h2>
+
+<div align = "center">
+<h2 style="font-family:verdana;">Disscusion Page</h2>
+
+
+ <body>
+     <div id="container">
+         <div class="title">
+            <h3 style="font-family:verdana;">Please fill in your details    
+           below and your comment to join the discussion</h3>
+        </div>
+        <div id="content">
+            <form method="post" action="{{ url_for('hello') }}">
+              <label for="yourname" style="font-family:verdana;">Please 
+           enter your name:</label>
+              <input type="text" name="yourname" /><br /><br>
+
+              <label for="youremail" style="font-family:verdana;">Please 
+           enter your email:</label>
+              <input type="text" name="youremail" /><br /><br>
+
+              <label for="yourcomment"style="font-family:verdana;">Please 
+           enter your comment:</label>
+              <input type="textarea" name="yourcomment" rows="4" cols="50">               
+              <input type="submit" /><br>
+            </form>
+
+
+        </div>  
+      </div>
+     </div>
+    </div>
+      <div id="container">
+         <div class="title">
+            <h1 style="font-family:verdana;"><p>Comments</p></h1>
+        </div>
+        <div id="content">
+
+                    {{details}}
+
+        </div>  
+
+      </div>
+    </body>
+  </html>
