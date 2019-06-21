@@ -1,9 +1,10 @@
-from flask import Flask,render_template,url_for,request, redirect, flash
+from flask import Flask,render_template,url_for,request, redirect, flash ,abort,send_file
 import pandas as pd 
 import pickle
 from sklearn.externals import joblib
 from werkzeug.utils import secure_filename
 import os
+import numpy
 
 UPLOAD_FOLDER = 'D:/ytb_model/Uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -12,7 +13,7 @@ app = Flask(__name__)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-#--------------------------------- BACKEND OF THE APP -----------------------------------------------------------
+#--------------------------------- BACKEND / MODEL -----------------------------------------------------------
 from sklearn.feature_extraction.text import CountVectorizer
 df= pd.read_csv("D:/ytb_model/YoutubeSpamMergedData.csv")
 df_data = df[["CONTENT","CLASS"]]
@@ -40,7 +41,7 @@ joblib.dump(clf, 'naivebayes_spam_model.pkl')
 # LOADING THE PICKLE FILE IN THE PREDICT MODEL   
 clf = joblib.load("naivebayes_spam_model.pkl")
 
-#-------------------------------- BACKEND END HERE --------------------------------------------------------------
+#-------------------------------- BACKEND finish HERE --------------------------------------------------------------
 
 
 @app.route('/', methods=['GET','POST'])
@@ -51,9 +52,25 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
+#------------------------------------ UPLOAD PART --------------------------------------------------------------------
 @app.route('/upload')
 def upload_file():
-   return render_template('upload.html')
+    
+      # Return 404 if path doesn't exist
+    if not os.path.exists(UPLOAD_FOLDER):
+        return abort(404)
+    
+    # Check if path is a file and serve
+    if os.path.isfile(UPLOAD_FOLDER):
+        return send_file(UPLOAD_FOLDER)
+
+    # Show directory contents
+    files = os.listdir(UPLOAD_FOLDER)
+    return render_template('upload.html', files=files)
+    
+    
+   #return render_template('upload.html')
 
 @app.route('/uploader', methods = ['GET','POST'])
 def upload_file1():
@@ -68,11 +85,20 @@ def upload_file1():
             return redirect(request.url)
              
         if file and allowed_file(file.filename):
+            if not os.path.exists(UPLOAD_FOLDER):
+                return abort(404)
+              
+            if os.path.isfile(UPLOAD_FOLDER):
+                return send_file(UPLOAD_FOLDER)
+
+            
+            files = os.listdir(UPLOAD_FOLDER)
+
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return( file.filename + '<h1> uploaded successfully </h1>')
+            return render_template('upload.html', files=files , msg = file.filename+'uploaded successfully' )
              
-
+#====================================== END OF UPLOAD SECTION ========================================================================                
    
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -81,11 +107,14 @@ def predict():
         data = [comment]
         vect = cv.transform(data).toarray()
         my_prediction = clf.predict(vect)
-    return render_template('result.html',prediction = my_prediction, accuracy = acc)
-
-
+    file = open("sample.txt","a")
+    file.write(f'{comment} , {my_prediction}\n')
+#    file.write('\n')
+    file.close()
+    with open("sample.txt", "r") as file:
+        file.close()
+    return render_template('result.html',prediction = my_prediction, accuracy = acc, details = comment)
 #-------------------------------------- (1) ADDITIONAL FUNCTIONALITY OF MODEL --------------------------------------------------
-
 @app.route('/content')
 def content():
 	text = open('testDoc.txt', 'r',encoding="utf8")
