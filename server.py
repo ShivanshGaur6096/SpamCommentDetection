@@ -4,7 +4,6 @@ import pickle
 from sklearn.externals import joblib
 from werkzeug.utils import secure_filename
 import os
-import numpy
 
 UPLOAD_FOLDER = 'D:/ytb_model/Uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -108,8 +107,7 @@ def predict():
         vect = cv.transform(data).toarray()
         my_prediction = clf.predict(vect)
     file = open("sample.txt","a")
-    file.write(f'{comment} , {my_prediction}\n')
-#    file.write('\n')
+    file.write('{} , {}\n'.format(comment, *my_prediction))
     file.close()
     with open("sample.txt", "r") as file:
         file.close()
