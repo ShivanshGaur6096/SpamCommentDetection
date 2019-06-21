@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
+	<head>
+		<title></title>
+    	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+	<style>
+	p.comment_text {
+	 border-bottom: 6px solid red;
+  background-color: lightgrey;
+  border-radius: 15px 50px 30px;
+}
+</style>
+	</head>
 <body>
 
 	<header>
-		<div class="container">
+	  <div class="container">
 		<div id="brandname">
 			ML App
 		</div>
-		<h2>Spam Detection For Youtube Comments</h2>
-		
-	</div>
+			<h2>Spam Comments Detection</h2>
+	  </div>
 	</header>
-	<p style="color:blue;font-size:20;text-align: center;"><b>Results for Comment</b></p>
-	<div class="results" align="center">
-
-		
-	{% if prediction == 1%}
-	<h2 style="color:red;">Spam</h2>
-	{% elif prediction == 0%}
-	<h2 style="color:blue;">Not a Spam (It is a Ham)</h2>
-	{% endif %}
-
+	
+	<i>MultinomialNB_Model_Accuracy</i> - <b><u>{% print "{:.5f}".format(accuracy),  " or {0:.0%}".format(accuracy) %}</u></b>
+	
+	<p style="color:blue; font-size:20; text-align:center;"><b>Results for Comment <br/></b></p>
+	<div align="center"> <p class="comment_text" style="color:black; font-size:15; text-align:center;  display : inline;"><i>{% print(details) %}</i></p> 
+	<!-- <div class="block-border"><span class="inline-border"><i>{% print(details) %}</i></span></div> -->
 	</div>
-	<button onclick="window.location.href='/'">Home</button>
+	<div class="results" align="center">
+		{% if prediction == 1%}
+		<h2 style="color:red;">Spam</h2>
+		{% elif prediction == 0%}
+		<h2 style="color:blue;">Not a Spam (It is a Ham)</h2>
+		{% endif %}
+	</div>
+	 </div>
+       
+	<button onclick="window.location.href='/'">Back</button>
 
 </body>
 </html>
