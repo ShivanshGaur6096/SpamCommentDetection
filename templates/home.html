@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Home</title>
-	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
+    <head>
+    	<title>Home</title>
+    	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+    	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    <body style="background:url("https://atgbcentral.com/data/out/37/4214905-background-images-for-websites.jpg");">
 
-	<header>
-		<div class="container">
-		<div id="brandname">
-			ML App
-		</div>
-		<h2>Spam Comments Detection</h2>
-		
-	</div>
-	</header>
+        	<header>
+	
+            	 <div class="container"> 
+            		<div id="brandname">
+            		MACHINE<br> 
+        			LEARNING
+        		</div>
+        		<h2>Spam Comments Detection</h2>
+    		
+            	</div>
+        	</header>
 
-	<div class="ml-container">
+    	<div class="ml-container">
 
 		<form action="{{ url_for('predict')}}" method="POST">
 		<p>Enter Your Comment Here</p>
 		<!-- <input type="text" name="comment"/> -->
-		<textarea name="comment" rows="4" cols="50"></textarea>		<br/>
+		<textarea placeholder="Enter your comment!" name="comment" rows="4" cols="50"></textarea>		<br/>
 		
 		
 		<input type="submit" class="btn-info" value="PREDICT">
@@ -30,7 +32,10 @@
 	</form>
 		
 	</div>
-<br/><br/><br/>
+	<br/><br/><br/>
+	
+	<p><i>Or <b><a href="/content"><button>Click</button></a></b> to go on content page</i></p><br/>
+<br/>
 	<p><i>Or <b><a href="/upload"><button>Click</button></a></b> to upload your text file</i></p><br/>
 	
 
