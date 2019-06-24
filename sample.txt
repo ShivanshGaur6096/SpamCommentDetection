@@ -1,0 +1,25 @@
+hello , 1
+not yet , 0
+where is that prediction goes , 0
+where is Martin  , 0
+subscribe to my channel , 1
+here we go again  , 1
+where is that guy? , 0
+where i am , 1
+what is the next step after this? , 0
+what are the basics of Machine learning , 0
+where are we right now? , 1
+what to do next? , 1
+do you guys going to organize live session?  , 1
+keep watching these videos , 1
+where to go , 1
+I would like to recommend these videos to my friends.  , 1
+where are you going? , 0
+may i come , 0
+may I come in sir , 1
+ads , 1
+where , 0
+superb lecture , 1
+how to go there , 1
+if we divide 27 by 36 what would be the output , 1
+clear that lecture which is on 27 and does it again with 36/32 , 0
