@@ -4,6 +4,9 @@ import pickle
 from sklearn.externals import joblib
 from werkzeug.utils import secure_filename
 import os
+import sqlite3
+
+conn = sqlite3.connect('model_result.db', check_same_thread=False)
 
 UPLOAD_FOLDER = 'D:/ytb_model/Uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -111,6 +114,10 @@ def predict():
     file.close()
     with open("sample.txt", "r") as file:
         file.close()
+#------DATABASE WORKING-------------
+    conn.execute("INSERT INTO RESULTS (COMMENT,RESULT) VALUES(?, ?)",(comment, my_prediction))
+    conn.commit()
+    conn.close()	
     return render_template('result.html',prediction = my_prediction, accuracy = acc, details = comment)
 #-------------------------------------- (1) ADDITIONAL FUNCTIONALITY OF MODEL --------------------------------------------------
 @app.route('/content')
