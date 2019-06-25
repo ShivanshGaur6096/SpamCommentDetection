@@ -3,10 +3,20 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
    <body>
-      <form action = "{{ url_for('predict')}}" method = "POST" enctype = "multipart/form-data">
-      <h2 style="color:red;font-size:20;text-align: left;">Upload your file here</h2>
+      <form action = "http://localhost:5000/uploader" method = "POST" enctype = "multipart/form-data">
+      <h2 style="color:red; font-family:Impact; font-size:30px; text-align: left;">Upload your file here</h2>
          <input type = "file" name = "file" /><br><br><br>
-         <input type="submit" class="btn-info" value="PREDICT">
+         <input type="submit" class="btn-info" value="SUBMIT">
       </form>
+          
+      {% if msg !=null %}
+      <p style="color:green">{{msg}}</p>
+      {%endif%}
+      
+      <ul>
+      {% for f in files %}
+      <li>{{f}}</li>
+      {% endfor %}
+      </ul>
    </body>
 </html>
