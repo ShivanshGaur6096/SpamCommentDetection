@@ -1,3 +1,24 @@
-<pre>
-{{ text }}
-</pre>
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<center>
+<form action="{{ url_for('predict')}}" method="POST" encoding="utf-8">
+<!--enctype="multipart/form-data"-->
+		<p style="font-family: Bradley Hand ITC; font-size: 18px;"><b>Your Document</b></p>
+
+<textarea name="comment" rows="10" cols="50">{{ text }}</textarea>
+<!--{{ text }} enctype = "multipart/form-data" -->
+
+<br/>
+			
+		<input type="submit" class="btn-info" value="PREDICT">
+		
+	</form>
+</center>
+</body>
+</html>
