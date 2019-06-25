@@ -9,26 +9,27 @@
             <header>
         	  <div class="container">
             		<div id="brandname">
-            			MACHINE<br> 
-        			LEARNING
+            			<img src="https://www.edjio.com/images/course-logo/machine-learning.png" height="125" width="210">
+            			<!--MACHINE<br>LEARNING-->
             		</div>
-    			<h2>Spam Comments Detection</h2>
+    			<h1>SPAM COMMENTS DETECTION</h1>
         	  </div>
         	</header>
 	
 	<i>MultinomialNB_Model_Accuracy</i> - <b><u>{% print "{:.5f}".format(accuracy),  " or {0:.0%}".format(accuracy) %}</u></b>
+		<center>
 		<p style="color:blue; font-size:20; text-align:center;">
     		<b>Results for Comment <br/></b>
     	</p>
 	
-    	<div align="center"> 
+    	<div> 
         	<p class="comment_text" style="color:black; font-size:15; text-align:center;  display : inline;">
             	<i>{% print(details) %}</i>
         	</p> 
     	</div>
 	
 	
-    	<div class="results" align="center">
+    	<div class="results">
         		{% if prediction == 1%}
         		<h2 style="color:red;">Spam</h2>
         		{% elif prediction == 0%}
@@ -36,8 +37,8 @@
         		{% endif %}
     	</div>
         	 </div>
-     
-    <button onclick="window.location.href='/'">Back</button>
+     </center>
+     <button onclick="window.location.href='/'" class="btn-sec" style="vertical-align:middle"><span>HOME</span></button>
 
-</body>
+    </body>
 </html>
