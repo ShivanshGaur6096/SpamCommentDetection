@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <style>
+    textarea {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 10px;
+}
+     </style>
     	<title>Home</title>
     	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
     	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
-    <body style="background:url("https://atgbcentral.com/data/out/37/4214905-background-images-for-websites.jpg");">
+    <body> <!--style="background: url(https://coolbackgrounds.io/images/backgrounds/index/disco-dba865f1.png); background-size: 100% 100%;"-->
+    <!--style="background: url(https://sorenbouma.github.io/images/omniglot_header_dark.jpg); background-size: 100% 100%;"-->
 
         	<header>
 	
             	 <div class="container"> 
             		<div id="brandname">
-            		MACHINE<br> 
-        			LEARNING
+            		<img src="https://www.edjio.com/images/course-logo/machine-learning.png" height="125" width="210">
+            		<!-- MACHINE<br>LEARNING -->
         		</div>
-        		<h2>Spam Comments Detection</h2>
+        		<h1>SPAM COMMENTS DETECTION</h1>
     		
             	</div>
-        	</header>
-
+        	</header><br>
+        <center>
     	<div class="ml-container">
 
 		<form action="{{ url_for('predict')}}" method="POST">
-		<p>Enter Your Comment Here</p>
+		<p style="font-family: Bradley Hand ITC; font-size: 18px;"><b>Enter Your Comment Here</b></p>
 		<!-- <input type="text" name="comment"/> -->
 		<textarea placeholder="Enter your comment!" name="comment" rows="4" cols="50"></textarea>		<br/>
 		
@@ -32,12 +40,16 @@
 	</form>
 		
 	</div>
+	</center>
 	<br/><br/><br/>
 	
-	<p><i>Or <b><a href="/content"><button>Click</button></a></b> to go on content page</i></p><br/>
-<br/>
-	<p><i>Or <b><a href="/upload"><button>Click</button></a></b> to upload your text file</i></p><br/>
+	<button onclick="window.location.href='/content'"class="btn-sec" style="vertical-align:middle">
+    	<span>Content Page</span>
+    </button> 
+	<br/><br/>
 	
-
+	<button onclick="window.location.href='/upload'" class="btn-sec" style="vertical-align:middle">
+    	<span>Upload File</span>
+	</button>
 </body>
 </html>
