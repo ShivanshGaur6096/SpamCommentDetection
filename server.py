@@ -119,7 +119,7 @@ def predict():
     conn.execute("INSERT INTO RESULTS (COMMENT,RESULT) VALUES(?, ?)",(comment, my_prediction))
     conn.commit()
     conn.close()	
-    return render_template('result.html',prediction = my_prediction, accuracy = acc, details = comment)
+    return render_template('result.html',prediction = my_prediction, accuracy = acc, pred_prcnt=predict_proba, details = comment)
 #-------------------------------------- (1) ADDITIONAL FUNCTIONALITY OF MODEL --------------------------------------------------
 @app.route('/content')
 def content():
