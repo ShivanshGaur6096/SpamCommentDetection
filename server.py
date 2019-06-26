@@ -17,6 +17,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #--------------------------------- BACKEND / MODEL -----------------------------------------------------------
 from sklearn.feature_extraction.text import CountVectorizer
+#------ change the csv file with other types of files in dtaset folder to get the direct prediction--------
 df= pd.read_csv("D:/ytb_model/YoutubeSpamMergedData.csv")
 df_data = df[["CONTENT","CLASS"]]
 
