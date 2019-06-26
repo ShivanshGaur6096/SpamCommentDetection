@@ -109,6 +109,7 @@ def predict():
         data = [comment]
         vect = cv.transform(data).toarray()
         my_prediction = clf.predict(vect)
+	predict_proba = clf.predict_proba(vect).tolist()
     file = open("sample.txt","a")
     file.write('{} , {}\n'.format(comment, *my_prediction))
     file.close()
