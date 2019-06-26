@@ -30,7 +30,12 @@
 	
 	<div> 
         	<p class="pred_pro" style="color:black; font-size:20px; text-align:center;">
-            	<i>{% print(pred_prcnt) %}</i>
+            	<i>{% for dif in pred_prcnt %}
+            	 
+            	 {{dif[0]*100}} - Ham <br/>
+            	 {{dif[1]*100}} - Spam
+            	 
+            	 {% endfor %}</i>
         	</p> 
     	</div>
 	<div> 
