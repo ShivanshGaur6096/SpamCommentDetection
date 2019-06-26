@@ -117,7 +117,7 @@ def predict():
     with open("sample.txt", "r") as file:
         file.close()
 #------DATABASE WORKING-------------
-    conn.execute("INSERT INTO RESULTS (COMMENT,RESULT) VALUES(?, ?)",(comment, my_prediction))
+    conn.execute("INSERT INTO RESULTS (COMMENT,OUTPUT) VALUES(?, ?)",(comment, my_prediction))
     conn.commit()
     conn.close()	
     return render_template('result.html',prediction = my_prediction, accuracy = acc, pred_prcnt=predict_proba, details = comment)
