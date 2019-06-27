@@ -45,13 +45,13 @@
     	</div>
 	
 	
-   <!-- 	<div class="results">
-        		{% if prediction == 1%}
+    	<div class="results">
+        		{% if prediction == ['SPAM'] %}
         		<h2 style="color:red;">Spam</h2>
-        		{% elif prediction == 0%}
-        		<h2 style="color:blue;">Not a Spam (It is a Ham)</h2>
+        		{% elif prediction == ['HAM'] %}
+        		<h2 style="color:green;">Not a Spam (It is a Ham)</h2>
         		{% endif %}
-    	</div> -->
+    	</div> 
         	 </div>
      </center>
      <button onclick="window.location.href='/'" class="btn-sec" style="vertical-align:middle"><span>HOME</span></button>
